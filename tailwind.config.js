@@ -17,7 +17,7 @@ export default {
         float: "float 6s ease-in-out infinite",
         pulseGlow: "pulseGlow 4s ease-in-out infinite",
         gradientX: "gradientX 4s ease infinite",
-        marquee: "marquee 30s linear infinite", // 👈 Add this
+        marquee: "marquee 30s linear infinite", 
       },
       keyframes: {
         gridScroll: {
@@ -36,20 +36,12 @@ export default {
           "0%, 100%": { "background-position": "0% 50%" },
           "50%": { "background-position": "100% 50%" },
         },
-        animation: {
-        // ... your other animations
-        marquee: "marquee 25s linear infinite",
-      },
-      keyframes: {
-        // ... your other keyframes
         marquee: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-33.333%)" }, // 👈 1/3 because we triple the list
+          "100%": { transform: "translateX(-33.333%)" },
         },
-      },
       },    
     },
   },
   plugins: [],
 };
-
