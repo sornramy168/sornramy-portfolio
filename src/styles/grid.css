@@ -1,0 +1,48 @@
+/* Fixed black background layer with a scrolling grid */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #000;
+  pointer-events: none;
+}
+
+.grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.10) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridScroll 14s linear infinite;
+  will-change: transform;
+}
+
+.grid-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(56,189,248,0.16), transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(139,92,246,0.16), transparent 55%);
+}
+
+@keyframes gridScroll {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, 60px, 0); }
+}
+
+/* Dark vignette over the grid */
+.grid-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}

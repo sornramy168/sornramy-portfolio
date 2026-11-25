@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+
+html, body, #root { 
+  min-height: 100%; 
+  overflow-x: hidden; /* សំខាន់៖ កាត់បញ្ហារុញអេក្រង់ទៅឆ្វេងស្តាំ */
+}
+
+/* ដាក់ពណ៌ Background លើ html មិនមែន body ទេ */
+html {
+  background-color: #030712; /* ពណ៌ខ្មៅដូច Grid របស់អ្នក */
+}
+
+html:not(.dark) {
+  background-color: #f1f5f9; 
+}
+
+body {
+  @apply font-sans antialiased text-slate-200;
+  background-color: transparent; /* ទុក body ឱ្យថ្លា ដើម្បីឱ្យ Grid មើលឃើញ */
+}
+
+html[data-lang="km"] body {
+  font-family: "Kantumruy Pro Variable", "Kantumruy Pro", "Kantumruy", sans-serif;
+}
+
+html:not(.dark) body {
+  color: #0f172a;            
+}
+
+/* Premium Light Mode Glass */
+html:not(.dark) .glass {
+  background-color: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9); 
+  box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);       
+}
+
+html:not(.dark) .glass-strong {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+html:not(.dark) .glass-hover:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+html { scroll-behavior: smooth; }
+::selection { background: rgba(56, 189, 248, 0.3); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; } /* ដាក់ឱ្យថ្លា */
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.55); }
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.3333%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
