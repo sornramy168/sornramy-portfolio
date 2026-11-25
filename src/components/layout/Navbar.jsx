@@ -5,6 +5,7 @@ import Button from "../common/Button.jsx";
 import ThemeToggle from "../common/ThemeToggle.jsx";
 import LanguageToggle from "../common/LanguageToggle.jsx";
 import { useTranslation } from "../../context/LanguageContext.jsx";
+import { useTheme } from "../../context/ThemeContext.jsx"; // 👈 បន្ថែម useTheme
 import MyP from "../../assets/img/MYPIC.png";
 
 export default function Navbar() {
@@ -12,6 +13,10 @@ export default function Navbar() {
   const scrollY = useScrollPosition();
   const scrolled = scrollY > 24;
   const { t } = useTranslation();
+  
+  // 👇 ទាញយក theme បច្ចុប្បន្ន
+  const { theme } = useTheme(); 
+  const isDark = theme === "dark";
 
   const links = [
     { label: t("nav.about"), href: "#about" },
@@ -23,19 +28,23 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 👇 z-[9999] ធានាថាវានៅលើរូបភាព និង Content ទាំងអស់ */}
       <header className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
         <div className="max-w-6xl px-4 mx-auto sm:px-6">
           
-          {/* 👇 បន្ថែម style ផ្ទាល់ ដើម្បីកុំឱ្យ Vercel Purge វា */}
           <nav 
-            className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 ${scrolled ? "shadow-2xl" : ""}`}
+            className="flex items-center justify-between px-4 py-3 transition-all duration-300 rounded-2xl"
             style={{
               backdropFilter: "blur(16px) saturate(150%)",
               WebkitBackdropFilter: "blur(16px) saturate(150%)",
-              backgroundColor: scrolled ? "rgba(15, 23, 42, 0.75)" : "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              boxShadow: scrolled ? "0 10px 40px -10px rgba(0,0,0,0.5)" : "none"
+              // 👇 ប្តូរពណ៌តាម Theme
+              backgroundColor: scrolled 
+                ? (isDark ? "rgba(15, 23, 42, 0.75)" : "rgba(255, 255, 255, 0.85)") 
+                : (isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(255, 255, 255, 0.5)"),
+              // 👇 ប្តូរពណ៌ Border តាម Theme
+              border: isDark ? "1px solid rgba(255, 255, 255, 0.1)" : "1px solid rgba(255, 255, 255, 0.8)",
+              boxShadow: scrolled 
+                ? (isDark ? "0 10px 40px -10px rgba(0,0,0,0.5)" : "0 10px 40px -10px rgba(0,0,0,0.1)") 
+                : "none"
             }}
           >
             
@@ -53,7 +62,7 @@ export default function Navbar() {
                 <li key={l.href}>
                   <a 
                     href={l.href} 
-                    className="relative px-4 py-2 text-sm font-medium transition-colors duration-300 text-slate-700 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 group"
+                    className="relative px-4 py-2 text-sm font-bold transition-colors duration-300 text-slate-700 hover:text-sky-600 dark:text-slate-300 dark:hover:text-sky-400 group"
                   >
                     <span className="relative z-10">{l.label}</span>
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-sky-500 group-hover:w-[80%] transition-all duration-300 ease-out shadow-[0_0_10px_rgba(56,189,248,0.8)]" />
@@ -76,7 +85,7 @@ export default function Navbar() {
               <LanguageToggle />
               <ThemeToggle />
               <button
-                className="flex items-center justify-center w-10 h-10 transition-colors glass rounded-xl text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
+                className="flex items-center justify-center w-10 h-10 transition-colors border rounded-xl text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400 border-slate-200 dark:border-white/10"
                 onClick={() => setOpen(true)}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
