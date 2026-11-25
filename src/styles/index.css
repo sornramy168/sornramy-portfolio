@@ -9,7 +9,7 @@ html, body, #root {
   overflow-x: hidden; 
 }
 
-/* ទុកឱ្យ html និង body ថ្លា ដើម្បីឱ្យ grid-bg មើលឃើញ */
+/* បង្ខំឱ្យ html និង body ថ្លា 100% ដើម្បីឱ្យ Grid លេចឡើង */
 html, body {
   background-color: transparent !important; 
 }

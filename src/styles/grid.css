@@ -4,12 +4,12 @@
   inset: 0;
   z-index: -2; /* នៅខាងក្រោយគេបង្អស់ */
   overflow: hidden;
-  background-color: #030712; /* ពណ៌ Slate ជំនួសពណ៌ខ្មៅស្តូក */
+  background-color: #030712; 
   pointer-events: none;
 }
 
 html:not(.dark) .grid-bg {
-  background-color: #f8fafc; /* ពណ៌សសម្រាប់ Light Mode */
+  background-color: #f8fafc; 
 }
 
 .grid-bg::before {
@@ -44,7 +44,7 @@ html:not(.dark) .grid-bg {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  /* 👇 បន្ថយពណ៌ខ្មៅមកត្រឹម 0.3 ដើម្បីឱ្យ Navbar មើលឃើញ Grid */
+  /* បន្ថយភាពងងឹតដើម្បីកុំឱ្យ Navbar ខ្មៅស្តូក */
   background: radial-gradient(
     ellipse at center,
     transparent 50%,

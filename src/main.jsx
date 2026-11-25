@@ -5,7 +5,6 @@ import "./styles/index.css";
 import "./styles/glass.css";
 import "./styles/grid.css";
 import { ThemeProvider } from "./context/ThemeContext.jsx"; 
-// import { AppProvider } from "./context/AppContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

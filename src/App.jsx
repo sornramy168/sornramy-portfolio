@@ -17,10 +17,10 @@ export default function App() {
       <LanguageProvider>
         <div className="relative flex flex-col min-h-screen">
           
-          {/* Background នៅខាងក្រោយគេ */}
+          {/* Background Grid */}
           <MotionGridBackground />
           
-          {/* Content នៅខាងលើ */}
+          {/* Content នៅស្រទាប់ខាងលើ z-10 */}
           <div className="relative z-10 flex flex-col flex-grow">
             <Navbar />
             <main className="flex-grow">
