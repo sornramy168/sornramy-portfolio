@@ -9,17 +9,13 @@ html, body, #root {
   overflow-x: hidden; 
 }
 
-html {
-  background-color: #030712; 
-}
-
-html:not(.dark) {
-  background-color: #f1f5f9; 
+/* ទុកឱ្យ html និង body ថ្លា ដើម្បីឱ្យ grid-bg មើលឃើញ */
+html, body {
+  background-color: transparent !important; 
 }
 
 body {
   @apply font-sans antialiased text-slate-200;
-  background-color: transparent; 
 }
 
 html[data-lang="km"] body {
@@ -29,51 +25,6 @@ html[data-lang="km"] body {
 
 html:not(.dark) body {
   color: #0f172a;            
-}
-
-/* =========================================
-   👇 បន្ថែមកូដថ្មីនៅទីនេះ (សម្រាប់ Dark Mode) 👇
-   ========================================= */
-
-/* Dark Mode Glass (Default) */
-.glass {
-  background-color: rgba(255, 255, 255, 0.04); /* ពណ៌សថ្លៃៗបន្តិច */
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-.glass-strong {
-  background-color: rgba(15, 23, 42, 0.7); /* ពណ៌ Slate ថ្លៃៗពេល Scroll */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
-}
-
-/* =========================================
-   Light Mode Glass Overrides
-   ========================================= */
-html:not(.dark) .glass {
-  background-color: rgba(255, 255, 255, 0.75); 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.9); 
-  box-shadow: 0 4px 24px -6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);       
-}
-
-html:not(.dark) .glass-strong {
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 1);
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-html:not(.dark) .glass-hover:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  background-color: rgba(255, 255, 255, 0.95);
 }
 
 html { scroll-behavior: smooth; }
@@ -86,15 +37,3 @@ html { scroll-behavior: smooth; }
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.55); }
-
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-33.3333%); }
-}
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marqueeScroll 25s linear infinite;
-  will-change: transform;
-}
-.marquee-track:hover { animation-play-state: paused; }
