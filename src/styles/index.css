@@ -6,12 +6,11 @@
 
 html, body, #root { 
   min-height: 100%; 
-  overflow-x: hidden; /* សំខាន់៖ កាត់បញ្ហារុញអេក្រង់ទៅឆ្វេងស្តាំ */
+  overflow-x: hidden; 
 }
 
-/* ដាក់ពណ៌ Background លើ html មិនមែន body ទេ */
 html {
-  background-color: #030712; /* ពណ៌ខ្មៅដូច Grid របស់អ្នក */
+  background-color: #030712; 
 }
 
 html:not(.dark) {
@@ -20,18 +19,42 @@ html:not(.dark) {
 
 body {
   @apply font-sans antialiased text-slate-200;
-  background-color: transparent; /* ទុក body ឱ្យថ្លា ដើម្បីឱ្យ Grid មើលឃើញ */
+  background-color: transparent; 
 }
 
 html[data-lang="km"] body {
-  font-family: "Kantumruy Pro Variable", "Kantumruy Pro", "Kantumruy", sans-serif;
+  font-family: "Kantumruy Pro", "Kantumruy", sans-serif !important;
+  line-height: 1.6;
 }
 
 html:not(.dark) body {
   color: #0f172a;            
 }
 
-/* Premium Light Mode Glass */
+/* =========================================
+   👇 បន្ថែមកូដថ្មីនៅទីនេះ (សម្រាប់ Dark Mode) 👇
+   ========================================= */
+
+/* Dark Mode Glass (Default) */
+.glass {
+  background-color: rgba(255, 255, 255, 0.04); /* ពណ៌សថ្លៃៗបន្តិច */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-strong {
+  background-color: rgba(15, 23, 42, 0.7); /* ពណ៌ Slate ថ្លៃៗពេល Scroll */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   Light Mode Glass Overrides
+   ========================================= */
 html:not(.dark) .glass {
   background-color: rgba(255, 255, 255, 0.75); 
   backdrop-filter: blur(16px);
@@ -57,7 +80,7 @@ html { scroll-behavior: smooth; }
 ::selection { background: rgba(56, 189, 248, 0.3); color: #fff; }
 
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: transparent; } /* ដាក់ឱ្យថ្លា */
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: rgba(56, 189, 248, 0.3);
   border-radius: 999px;
