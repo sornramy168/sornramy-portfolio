@@ -14,7 +14,7 @@ export default {
   },
   hero: {
     availableForWork: "អាចទទួលការងារ",
-    hiIm: "សួស្តី ខ្ញុំឈ្មោះ",
+    hiIm: "សួស្តីខ្ញុំឈ្មោះ",
     viewProjects: "មើលគម្រោង",
     downloadCV: "ទាញយក CV",
     name: "សន រ៉ាមី",
