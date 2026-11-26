@@ -18,21 +18,21 @@ export default function MobileMenu({ open, onClose, links = [] }) {
         open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      {/* Overlay */}
+      {/* 👇 ដក backdrop-blur-sm ចេញ ដើម្បីកុំឱ្យវា Glitch */}
       <div 
-        className="absolute inset-0 transition-opacity bg-slate-900/40 dark:bg-black/70 backdrop-blur-sm" 
+        className="absolute inset-0 transition-opacity bg-slate-900/60 dark:bg-black/80" 
         onClick={onClose} 
       />
 
-      {/* Drawer */}
+      {/* 👇 ប្រើ h-[100dvh] និងដក backdrop-blur ចេញពី Drawer */}
       <aside
-        className={`absolute right-0 top-0 h-full w-[80%] max-w-sm p-6 transition-transform duration-300 ease-out 
-        bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border-l border-slate-200 dark:border-white/10 shadow-2xl flex flex-col ${
+        className={`absolute right-0 top-0 h-[100dvh] w-[80%] max-w-sm flex flex-col transition-transform duration-300 ease-out 
+        bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-white/10 shadow-2xl ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between pb-6 border-b border-slate-200 dark:border-white/10">
+        {/* Header (ជាប់នៅខាងលើ) */}
+        <div className="flex items-center justify-between p-6 pb-4 border-b border-slate-200 dark:border-white/10 shrink-0">
           <span className="text-lg font-bold text-slate-900 dark:text-white">
             {t("nav.menu")}
           </span>
@@ -46,21 +46,18 @@ export default function MobileMenu({ open, onClose, links = [] }) {
           </button>
         </div>
 
-        {/* Links - ដាក់ Laser Line នៅក្រោមអក្សរតែម្តង */}
-        <ul className="flex flex-col gap-1 mt-6 overflow-y-auto">
+        {/* Links (អាច Scroll បាន បើវែងពេក) */}
+        {/* 👇 បន្ថែម flex-1 overflow-y-auto overscroll-contain */}
+        <ul className="flex flex-col flex-1 gap-1 p-6 overflow-y-auto overscroll-contain">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={onClose}
-                // ដាក់ group នៅលើ a តែម្តង ហើយដាក់ padding ឱ្យវាធំឧស្សាហ៍
                 className="flex items-center px-4 py-3 text-base font-medium transition-colors duration-300 rounded-xl text-slate-700 hover:bg-slate-50 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5 dark:active:bg-white/10 group"
               >
-                {/* ដាក់ span មួយនេះឱ្យវាព័ទ្ធជុំវិញអក្សរ ដើម្បីឱ្យបន្ទាត់វាស្មើនឹងអក្សរ */}
                 <span className="relative inline-block">
                   {l.label}
-                  
-                  {/* 👇 បន្ទាត់ Laser ឥឡូវនេះនឹងរត់តាមប្រវែងអក្សរពិតៗ */}
                   <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-sky-500 group-hover:w-full group-active:w-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(56,189,248,0.8)]" />
                 </span>
               </a>
@@ -68,9 +65,9 @@ export default function MobileMenu({ open, onClose, links = [] }) {
           ))}
         </ul>
 
-        {/* Footer */}
-        <div className="pt-6 mt-auto border-t border-slate-200 dark:border-white/10">
-          <div className="flex items-center gap-3 p-3 mb-6 border rounded-2xl bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5">
+        {/* Footer (ជាប់នៅខាងក្រោម) */}
+        <div className="p-6 pt-4 border-t border-slate-200 dark:border-white/10 shrink-0 bg-slate-50 dark:bg-slate-900/50">
+          <div className="flex items-center gap-3 p-3 mb-6 bg-white border shadow-sm rounded-2xl dark:bg-white/5 border-slate-200 dark:border-white/5">
             <LanguageToggle />
             <ThemeToggle />
             <span className="ml-auto text-xs font-bold tracking-wider uppercase text-slate-400 dark:text-slate-500">
