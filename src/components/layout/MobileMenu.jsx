@@ -8,8 +8,17 @@ export default function MobileMenu({ open, onClose, links = [] }) {
   const { t } = useTranslation();
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (open) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none"; 
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
   }, [open]);
 
   return (
@@ -18,21 +27,22 @@ export default function MobileMenu({ open, onClose, links = [] }) {
         open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       }`}
     >
-      {/* 👇 ដក backdrop-blur-sm ចេញ ដើម្បីកុំឱ្យវា Glitch */}
       <div 
-        className="absolute inset-0 transition-opacity bg-slate-900/60 dark:bg-black/80" 
+        className="absolute inset-0 transition-opacity bg-slate-900/80 dark:bg-black/80" 
         onClick={onClose} 
       />
 
-      {/* 👇 ប្រើ h-[100dvh] និងដក backdrop-blur ចេញពី Drawer */}
       <aside
-        className={`absolute right-0 top-0 h-[100dvh] w-[80%] max-w-sm flex flex-col transition-transform duration-300 ease-out 
-        bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-white/10 shadow-2xl ${
+        className={`absolute right-0 top-0 h-[100dvh] w-[85%] max-w-sm flex flex-col transition-transform duration-300 ease-out border-l border-slate-200 dark:border-white/10 shadow-2xl ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{ 
+          backgroundColor: document.documentElement.classList.contains("dark") ? "#0f172a" : "#ffffff",
+          WebkitOverflowScrolling: "touch" 
+        }}
       >
-        {/* Header (ជាប់នៅខាងលើ) */}
-        <div className="flex items-center justify-between p-6 pb-4 border-b border-slate-200 dark:border-white/10 shrink-0">
+        
+        <div className="flex items-center justify-between p-5 border-b border-slate-200 dark:border-white/10 shrink-0">
           <span className="text-lg font-bold text-slate-900 dark:text-white">
             {t("nav.menu")}
           </span>
@@ -46,15 +56,13 @@ export default function MobileMenu({ open, onClose, links = [] }) {
           </button>
         </div>
 
-        {/* Links (អាច Scroll បាន បើវែងពេក) */}
-        {/* 👇 បន្ថែម flex-1 overflow-y-auto overscroll-contain */}
-        <ul className="flex flex-col flex-1 gap-1 p-6 overflow-y-auto overscroll-contain">
+        <ul className="flex flex-col flex-1 gap-2 p-5 overflow-y-auto overscroll-contain touch-pan-y">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
                 onClick={onClose}
-                className="flex items-center px-4 py-3 text-base font-medium transition-colors duration-300 rounded-xl text-slate-700 hover:bg-slate-50 active:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5 dark:active:bg-white/10 group"
+                className="flex items-center px-4 py-3 text-base font-bold transition-colors duration-300 rounded-xl text-slate-700 hover:bg-slate-100 active:bg-slate-200 dark:text-slate-300 dark:hover:bg-white/5 dark:active:bg-white/10 group"
               >
                 <span className="relative inline-block">
                   {l.label}
@@ -65,9 +73,8 @@ export default function MobileMenu({ open, onClose, links = [] }) {
           ))}
         </ul>
 
-        {/* Footer (ជាប់នៅខាងក្រោម) */}
-        <div className="p-6 pt-4 border-t border-slate-200 dark:border-white/10 shrink-0 bg-slate-50 dark:bg-slate-900/50">
-          <div className="flex items-center gap-3 p-3 mb-6 bg-white border shadow-sm rounded-2xl dark:bg-white/5 border-slate-200 dark:border-white/5">
+        <div className="p-5 border-t border-slate-200 dark:border-white/10 shrink-0 bg-slate-50 dark:bg-[#0b1120]">
+          <div className="flex items-center gap-3 p-3 mb-5 bg-white border shadow-sm rounded-2xl dark:bg-white/5 border-slate-200 dark:border-white/5">
             <LanguageToggle />
             <ThemeToggle />
             <span className="ml-auto text-xs font-bold tracking-wider uppercase text-slate-400 dark:text-slate-500">
@@ -82,6 +89,7 @@ export default function MobileMenu({ open, onClose, links = [] }) {
             <SocialLinks />
           </div>
         </div>
+        
       </aside>
     </div>
   );
