@@ -21,11 +21,10 @@ export default function Hero() {
             {t("hero.availableForWork")}
           </span>
 
-          {/* 👇 Added text-slate-900 dark:text-white */}
           <h1 className="mt-6 text-4xl font-semibold leading-tight text-slate-900 dark:text-white sm:text-6xl">
             {t("hero.hiIm")}{" "}
             <Typewriter
-              text={t("hero.name", personalInfo.name)}
+              text={t("hero.name")}
               typingSpeed={150}
               deletingSpeed={100}
               pauseDuration={2000}
@@ -34,11 +33,10 @@ export default function Hero() {
             
           </h1>
 
-          {/* 👇 Added text-slate-600 dark:text-slate-300 */}
           <p className="max-w-xl mt-4 text-lg text-slate-600 dark:text-slate-300">
             {t("personalInfo.tagline", personalInfo.tagline)}
           </p>
-          {/* 👇 Added text-slate-500 dark:text-slate-400 */}
+          
           <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
             {t("personalInfo.role", personalInfo.role)} ·{" "}
             {t("personalInfo.location", personalInfo.location)}
