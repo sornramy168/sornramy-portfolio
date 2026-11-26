@@ -10,14 +10,14 @@ export default function MobileMenu({ open, onClose, links = [] }) {
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none"; 
+      document.body.style.overscrollBehavior = "none"; 
     } else {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
+      document.body.style.overscrollBehavior = "";
     }
     return () => {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
+      document.body.style.overscrollBehavior = "";
     };
   }, [open]);
 
@@ -33,15 +33,11 @@ export default function MobileMenu({ open, onClose, links = [] }) {
       />
 
       <aside
-        className={`absolute right-0 top-0 h-[100dvh] w-[85%] max-w-sm flex flex-col transition-transform duration-300 ease-out border-l border-slate-200 dark:border-white/10 shadow-2xl ${
+        className={`fixed right-0 top-0 bottom-0 h-[100dvh] w-[85%] max-w-sm flex flex-col transition-transform duration-300 ease-out 
+        bg-white dark:bg-[#0f172a] border-l border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
-        style={{ 
-          backgroundColor: document.documentElement.classList.contains("dark") ? "#0f172a" : "#ffffff",
-          WebkitOverflowScrolling: "touch" 
-        }}
       >
-        
         <div className="flex items-center justify-between p-5 border-b border-slate-200 dark:border-white/10 shrink-0">
           <span className="text-lg font-bold text-slate-900 dark:text-white">
             {t("nav.menu")}
@@ -56,7 +52,10 @@ export default function MobileMenu({ open, onClose, links = [] }) {
           </button>
         </div>
 
-        <ul className="flex flex-col flex-1 gap-2 p-5 overflow-y-auto overscroll-contain touch-pan-y">
+        <ul 
+          className="flex flex-col flex-1 gap-2 p-5 overflow-y-auto overscroll-contain touch-pan-y"
+          style={{ overscrollBehavior: "contain" }}
+        >
           {links.map((l) => (
             <li key={l.href}>
               <a
@@ -89,7 +88,6 @@ export default function MobileMenu({ open, onClose, links = [] }) {
             <SocialLinks />
           </div>
         </div>
-        
       </aside>
     </div>
   );
