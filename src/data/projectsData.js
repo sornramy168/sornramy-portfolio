@@ -44,7 +44,7 @@ export const projectsData = [
     repo: "..."
   },
   {
-    id: 4,
+    id: 5,
     title: "Tech Spark E-commerce",
     description: "A beautiful storefront.",
     category: "frontend", 
