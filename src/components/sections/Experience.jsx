@@ -19,10 +19,10 @@ export default function Experience() {
                 title={t("experience.title")}
                 subtitle={t("experience.subtitle")}
               />
-              <div className="flex items-center gap-3 mt-8 text-sm font-semibold text-slate-500 dark:text-slate-400">
+              {/* <div className="flex items-center gap-3 mt-8 text-sm font-semibold text-slate-500 dark:text-slate-400">
                 <FaCircleDot className="text-sky-500 animate-pulse" />
                 <span>Scroll to view timeline</span>
-              </div>
+              </div> */}
             </div>
           </div>
 

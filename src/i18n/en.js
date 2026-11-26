@@ -55,8 +55,8 @@ export default {
     code: "Code",
   },
   experience: {
-    eyebrow: "Experience",
-    title: "Where I've worked",
+    eyebrow: "Experience & Education",
+    title: "Where I've worked and studied",
     subtitle: "A quick timeline of my journey so far.",
   },
   contact: {

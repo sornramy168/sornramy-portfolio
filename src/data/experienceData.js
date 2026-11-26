@@ -1,37 +1,27 @@
 export const experienceData = [
   {
-    role: "Full Stack Developer",
-    company: "Freelance",
-    period: "2023 — Present",
-    description: "Designing and shipping web apps for startups and small teams.",
+    role: "Camera Checker & System Support",
+    company: "Vireak Buntham Express",
+    period: "2025 — 2026",
+    description: "Monitored and verified digital surveillance systems for a large-scale logistics fleet to ensure safety and compliance.",
     highlights: [
-      "Built 10+ production React apps with modern tooling.",
-      "Improved Lighthouse performance scores to 95+.",
-      "Designed reusable component libraries with Tailwind.",
+      "Monitored live GPS and camera feeds to track vehicle safety and operational efficiency.",
+      "Troubleshot hardware and software issues with onboard camera systems.",
+      "Managed and organized daily video data logs using internal tracking software.",
     ],
   },
   {
-    role: "Frontend Developer",
-    company: "Tech Studio",
-    period: "2022 — 2023",
-    description: "Owned UI implementation for client dashboards and marketing sites.",
+    role: "Bachelor of Information Technology (Year 3)",
+    company: "Royal University of Phnom Penh",
+    period: "2024 — Present",
+    description: "Currently pursuing a degree in IT, focusing on modern web development and software engineering principles.",
     highlights: [
-      "Migrated legacy UI to React + Tailwind.",
-      "Reduced bundle size by 40% with code splitting.",
-      "Collaborated closely with designers on a shared design system.",
+      "Built responsive UI dashboards for academic projects using React and Tailwind CSS.",
+      "Optimized project performance through code splitting, reducing bundle sizes by up to 40%.",
+      "Collaborated with student teams to design and maintain a shared UI component library.",
     ],
   },
-  {
-    role: "Junior Web Developer",
-    company: "Startup Hub",
-    period: "2021 — 2022",
-    description: "Built and maintained landing pages and internal tools.",
-    highlights: [
-      "Shipped responsive pages for 20+ campaigns.",
-      "Automated deployment with CI/CD pipelines.",
-      "Learned full stack fundamentals end to end.",
-    ],
-  },
+
 ];
 
 export default experienceData;
