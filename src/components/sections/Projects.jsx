@@ -22,7 +22,7 @@ export default function Projects() {
     : projectsData.filter(p => p.category === activeTab);
 
   return (
-    <section id="projects" className="relative py-12">
+    <section id="projects" className="relative py-20">
       <div className="max-w-6xl px-6 mx-auto">
         <SectionTitle
           eyebrow={t("projects.eyebrow")}
@@ -56,36 +56,32 @@ export default function Projects() {
               className="flex flex-col h-full overflow-hidden transition-all duration-300 border shadow-sm group rounded-3xl border-slate-200 bg-white/60 backdrop-blur-xl hover:-translate-y-1 hover:shadow-xl dark:border-white/10 dark:bg-slate-900/50 dark:hover:border-sky-500/50"
             >
               
-              {/* Image Container - 16/10 aspect ratio looks best for 3 columns */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                {/* 👇 បន្ថែម loading="lazy" និង decoding="async" នៅទីនេះ */}
                 <img
                   src={p.image}
                   alt={p.title}
+                  loading="lazy"
+                  decoding="async"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => { e.currentTarget.style.opacity = 0; }}
                 />
-                {/* Light/Dark overlay for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent dark:from-slate-950/90 dark:via-slate-950/20" />
                 
-                {/* Category Badge */}
                 <span className="absolute top-4 left-4 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-white/90 text-slate-800 backdrop-blur-md dark:bg-black/60 dark:text-white border border-white/20">
                   {p.category || "Project"}
                 </span>
               </div>
 
-              {/* Content */}
               <div className="flex flex-col flex-grow p-6">
-                {/* Title */}
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white line-clamp-1">
                   {p.title}
                 </h3>
                 
-                {/* Description - Line clamp ensures equal height cards */}
                 <p className="flex-grow mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400 line-clamp-2">
                   {p.description}
                 </p>
 
-                {/* Tags */}
                 <ul className="flex flex-wrap gap-1.5 mt-4">
                   {p.tags.slice(0, 3).map((tag) => (
                     <li key={tag} className="px-2.5 py-1 text-xs font-medium border rounded-lg border-slate-200 bg-slate-50 text-slate-600 dark:border-sky-400/20 dark:bg-sky-500/10 dark:text-sky-300">
@@ -99,25 +95,11 @@ export default function Projects() {
                   )}
                 </ul>
 
-                {/* Actions */}
                 <div className="flex items-center gap-3 pt-5 mt-6 border-t border-slate-100 dark:border-white/5">
-                  <Button 
-                    as="a" 
-                    href={p.live} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    variant="primary" 
-                    className="flex-1 !py-2 !text-sm text-center justify-center rounded-xl"
-                  >
+                  <Button as="a" href={p.live} target="_blank" rel="noreferrer" variant="primary" className="flex-1 !py-2 !text-sm text-center justify-center rounded-xl">
                     {t("projects.liveDemo")}
                   </Button>
-                  
-                  <a 
-                    href={p.repo} 
-                    target="_blank" 
-                    rel="noreferrer" 
-                    className="flex items-center justify-center w-10 h-10 transition-colors border rounded-xl border-slate-200 text-slate-600 hover:text-sky-600 hover:border-sky-300 hover:bg-sky-50 dark:border-white/10 dark:text-slate-300 dark:hover:text-sky-400 dark:hover:border-sky-400/50 dark:hover:bg-sky-500/10 shrink-0"
-                  >
+                  <a href={p.repo} target="_blank" rel="noreferrer" className="flex items-center justify-center w-10 h-10 transition-colors border rounded-xl border-slate-200 text-slate-600 hover:text-sky-600 hover:border-sky-300 hover:bg-sky-50 dark:border-white/10 dark:text-slate-300 dark:hover:text-sky-400 dark:hover:border-sky-400/50 dark:hover:bg-sky-500/10 shrink-0">
                     <GithubIcon className="w-5 h-5" />
                   </a>
                 </div>
