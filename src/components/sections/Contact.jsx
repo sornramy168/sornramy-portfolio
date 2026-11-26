@@ -21,10 +21,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-12 overflow-hidden">
-      {/* Background Ambient Glows */}
-      {/* <div className="absolute right-0 top-1/4 h-96 w-96 translate-x-1/3 rounded-full bg-sky-500/10 blur-[120px] dark:bg-sky-500/15" />
-      <div className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/3 rounded-full bg-violet-500/10 blur-[120px] dark:bg-violet-500/15" /> */}
+    <section id="contact" className="relative w-full py-12 overflow-hidden">
+      
+      {/* 👇 ដាក់ Background Glows នៅក្នុង Wrapper នេះ ដើម្បីកុំឱ្យវារុញទំព័រចេញក្រៅ */}
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute right-0 top-1/4 h-96 w-96 translate-x-1/3 rounded-full bg-sky-500/10 blur-[120px] dark:bg-sky-500/15" />
+        <div className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/3 rounded-full bg-violet-500/10 blur-[120px] dark:bg-violet-500/15" />
+      </div> */}
 
       <div className="relative z-10 max-w-6xl px-6 mx-auto">
         <SectionTitle
@@ -33,10 +36,11 @@ export default function Contact() {
           subtitle={t("contact.subtitle")}
         />
 
-        <div className="grid gap-6 mt-12 md:grid-cols-[1fr_1.5fr]">
+        {/* 👇 បន្ថែម min-w-0 ទៅលើ Grid */}
+        <div className="grid gap-6 mt-12 md:grid-cols-[1fr_1.5fr] min-w-0">
           
           {/* Left Column: Info Card */}
-          <div className="flex flex-col justify-between p-6 border shadow-sm sm:p-8 rounded-3xl border-slate-200 bg-white/60 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/50">
+          <div className="flex flex-col justify-between min-w-0 p-6 border shadow-sm sm:p-8 rounded-3xl border-slate-200 bg-white/60 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/50">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                 {t("contact.getInTouch")}
@@ -47,7 +51,7 @@ export default function Contact() {
 
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-4 p-4 mt-8 transition-all border group rounded-2xl border-slate-200 bg-slate-50 hover:border-sky-300 hover:bg-sky-50 dark:border-white/10 dark:bg-white/5 dark:hover:border-sky-500/50 dark:hover:bg-sky-500/10"
+                className="flex items-center min-w-0 gap-4 p-4 mt-8 transition-all border group rounded-2xl border-slate-200 bg-slate-50 hover:border-sky-300 hover:bg-sky-50 dark:border-white/10 dark:bg-white/5 dark:hover:border-sky-500/50 dark:hover:bg-sky-500/10"
               >
                 <div className="flex items-center justify-center w-12 h-12 bg-white shadow-sm rounded-xl dark:bg-slate-800 shrink-0">
                   <MailIcon className="w-6 h-6 text-sky-500 dark:text-sky-400" />
@@ -56,6 +60,7 @@ export default function Contact() {
                   <p className="text-xs font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
                     Email Me
                   </p>
+                  {/* បន្ថែម truncate ដើម្បីកុំឱ្យអ៊ីមែលវែងរុញប្រអប់ */}
                   <p className="mt-1 font-semibold truncate text-slate-900 group-hover:text-sky-600 dark:text-white dark:group-hover:text-sky-400">
                     {personalInfo.email}
                   </p>
@@ -72,10 +77,10 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Form */}
-          <div className="p-6 border shadow-sm sm:p-8 rounded-3xl border-slate-200 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/80">
+          <div className="min-w-0 p-6 border shadow-sm sm:p-8 rounded-3xl border-slate-200 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/80">
             <form onSubmit={onSubmit} className="space-y-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="block">
+              <div className="grid min-w-0 gap-5 sm:grid-cols-2">
+                <label className="block min-w-0">
                   <span className="text-xs font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
                     {t("contact.name")}
                   </span>
@@ -88,7 +93,7 @@ export default function Contact() {
                   />
                 </label>
 
-                <label className="block">
+                <label className="block min-w-0">
                   <span className="text-xs font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
                     {t("contact.email")}
                   </span>
@@ -103,7 +108,7 @@ export default function Contact() {
                 </label>
               </div>
 
-              <label className="block">
+              <label className="block min-w-0">
                 <span className="text-xs font-bold tracking-widest uppercase text-slate-500 dark:text-slate-400">
                   {t("contact.message")}
                 </span>
